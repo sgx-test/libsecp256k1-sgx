@@ -90,10 +90,10 @@ pub mod util {
     pub use crate::der::SignatureArray;
 }
 
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq, Copy)]
 /// Public key on a secp256k1 curve.
 pub struct PublicKey(Affine);
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq, Copy)]
 /// Secret key (256-bit) on a secp256k1 curve.
 pub struct SecretKey(Scalar);
 #[derive(Debug, Clone, Eq, PartialEq)]
@@ -455,11 +455,11 @@ impl TryFrom<Scalar> for SecretKey {
     }
 }
 
-impl Drop for SecretKey {
-    fn drop(&mut self) {
-        self.0.clear();
-    }
-}
+//impl Drop for SecretKey {
+//    fn drop(&mut self) {
+//        self.0.clear();
+//    }
+//}
 
 impl core::fmt::LowerHex for SecretKey {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
