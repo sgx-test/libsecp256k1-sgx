@@ -47,7 +47,7 @@ macro_rules! field_storage_const {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Copy)]
 /// Field element for secp256k1.
 pub struct Field {
     pub n: [u32; 10],
